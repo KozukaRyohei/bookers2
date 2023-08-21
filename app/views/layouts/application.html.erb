@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
+    <title>Bookers2 </title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,7 +12,9 @@
 
   <body>
     <header>
-    <h2>Bookers</h2>
+    <a class="navbar-brand" href = "/">
+      <h2>Bookers</h2><!--あとから画像に差し替え-->
+    </a>
 
     <% if user_signed_in? %>
     <!--ログイン中のヘッダー-->
