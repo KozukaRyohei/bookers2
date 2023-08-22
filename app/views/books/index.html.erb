@@ -1,0 +1,30 @@
+
+<!--ページの左側-->
+<h2>User info</h2>
+
+  <!--プロフィール画像の表示-->
+  <%= image_tag @users.get_profile_image(100,100) %>
+    <!--画像がある場合その画像を表示-->
+    <!--画像がない場合 NoImageの画像を表示  -->
+  <!--名前を表示-->
+  <%= @users.name %>
+  <!--自己紹介文表示-->
+  <%= @users.introduction %>
+  <!--プロフィール編集のリンク設定-->
+    <%= link_to "edit", edit_user_path(@users.id) %> <!--あとから画像に変更-->
+    <!--自己紹介文のフォーム設定-->
+    <h2>New book</h2>
+    <%= form_with model: @user do |f| %>
+      <p>Title</p>
+      <%= f.text_field :title %>
+      <p>Opinion</p>
+      <%= f.text_area :introduction %>
+      <%= f.submit 'Create Book'%>
+    <% end %>
+
+    <!--投稿ボタン-->
+<h2>Books</h2>
+<table class="table table-hover table-inverse">
+
+</table>
+<!--ページの右側-->
