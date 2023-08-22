@@ -3,28 +3,48 @@
 <h2>User info</h2>
 
   <!--プロフィール画像の表示-->
-  <%= image_tag @users.get_profile_image(100,100) %>
+  <%= image_tag @user.get_profile_image(100,100) %>
     <!--画像がある場合その画像を表示-->
     <!--画像がない場合 NoImageの画像を表示  -->
   <!--名前を表示-->
-  <%= @users.name %>
+  <%= @user.name %>
   <!--自己紹介文表示-->
-  <%= @users.introduction %>
+  <%= @user.introduction %>
   <!--プロフィール編集のリンク設定-->
-    <%= link_to "edit", edit_user_path(@users.id) %> <!--あとから画像に変更-->
+    <%= link_to "edit", edit_user_path(@user.id) %> <!--あとから画像に変更-->
     <!--自己紹介文のフォーム設定-->
     <h2>New book</h2>
-    <%= form_with model: @user do |f| %>
+    <%= form_with model: @book do |f| %>
       <p>Title</p>
       <%= f.text_field :title %>
       <p>Opinion</p>
-      <%= f.text_area :introduction %>
+      <%= f.text_area :body %>
       <%= f.submit 'Create Book'%>
     <% end %>
 
-    <!--投稿ボタン-->
+
+  <!--ページの右側-->
 <h2>Books</h2>
 <table class="table table-hover table-inverse">
 
+  <thead>
+    <tr>
+      <th></th><!--画像の部分はカラム名空白-->
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @books.each do |book| %>
+    <tr>
+      <td>
+        <%= link_to user_path(book.user_id) do %>
+          <%= image_tag book.user.get_profile_image(80,80) %>
+        <% end %>
+      </td>
+        <td><%= link_to book.title,book_path(book.id)  %></td>
+        <td><%= book.body %></td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>
-<!--ページの右側-->
