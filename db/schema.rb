@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 2023_08_21_084548) do
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.integer "user_id"
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
