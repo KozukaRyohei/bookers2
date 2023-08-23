@@ -1,38 +1,6 @@
 
-<!--ページの左側-->
-<h2>User info</h2>
+<%= render 'book', book_new: @book, user: @user %>
 
-<%= image_tag @user.get_profile_image(100,100) %>
-
-<table class = "table">
-  <tbody>
-    <tr></tr>
-    <tr>
-      <th>name</th>
-      <th><%= @user.name %></th>
-    </tr>
-    <tr>
-      <th>introduction</th>
-      <th><%= @user.introduction %></th></th>
-    </tr>
-  </tbody>
-</table>
-
-<div class = "row">
-  <%= link_to "edit", edit_user_path(@user.id) %> <!--あとから画像に変更-->
-</div>
-
-<h2 class ="mt">New book</h2>
-  <%= form_with model: @book do |f| %>
-    <p>Title</p>
-    <%= f.text_field :title %>
-    <p>Opinion</p>
-    <%= f.text_area :body %>
-    <%= f.submit 'Create Book'%>
-  <% end %>
-
-
-  <!--ページの右側-->
 <h2>Books</h2>
 <table class="table table-hover table-inverse">
 
