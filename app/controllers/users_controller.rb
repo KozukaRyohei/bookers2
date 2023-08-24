@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+
+  def index
+    @user = current_user
+    @book = Book.new
+    @books = Book.all
+    @users = User.all
+  end
+
   def edit
     @user = User.find(params[:id])
   end

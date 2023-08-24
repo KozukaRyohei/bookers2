@@ -2,51 +2,85 @@
 <html>
   <head>
     <title>Bookers2 </title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://kit.fontawesome.com/1c872d371f.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
-    <a class="navbar-brand" href = "/">
-      <h2>Bookers</h2><!--あとから画像に差し替え-->
-    </a>
 
-    <% if user_signed_in? %>
+        <% if user_signed_in? %>
     <!--ログイン中のヘッダー-->
-      <li>
-         <%= link_to "Home",root_path %>
-      </li>
-      <li>
-        <%= link_to "Users", users_path %>
-      </li>
-      <li>
-        <%= link_to "Books", books_path %>
-      </li>
-      <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      </li>
-
-    <% else %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class = "container" >
+            <a class="navbar-brand" href="/">
+                <span>Bookers</span>
+            </a>
+            <div class="navbar-collapse collapse">
+              <ul class="navbar-nav ml-auto">
+                <li>
+                  <%= link_to root_path, class:"nav-link text-light" do %>
+                     <i class="fa-solid fa-house-chimney"></i> Home
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to users_path, class:"nav-link text-light" do %>
+                      <i class="fa-solid fa-users"></i> Users
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to books_path, class:"nav-link text-light" do %>
+                    <i class="fa-solid fa-book-open"></i> Books
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, class:"nav-link text-light",method: :delete do %>
+                    <i class="fa-solid fa-right-from-bracket"></i> Log out
+                  <% end %>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    </header>
+          <% else %>
     <!--ログインしていない状態のヘッダー-->
-      <li>
-         <%= link_to "Home", root_path %>
-      </li>
-      <li>
-        <%= link_to "About", about_path %>
-      </li>
-      <li>
-        <%= link_to "Sign up", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Log in", new_user_session_path %>
-      </li>
-    <% end %>
-  </header>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class = "container" >
+            <a class="navbar-brand" href="/">
+                <span>Bookers</span>
+            </a>
+            <div class="navbar-collapse collapse">
+              <ul class="navbar-nav ml-auto">
+                <li>
+                  <a class="nav-link text-light" href="/">
+                     <i class="fa-solid fa-house-chimney"></i> Home
+                  </a>
+                </li>
+                  <a class="nav-link text-light" href="/homes/about">
+                    <i class="fa-solid fa-link"></i> About
+                  </a>
+                  <a class="nav-link text-light" href="/users/sign_up">
+                    <i class="fa-solid fa-user-plus"></i> Sign up
+                  </a>
+                  <a class="nav-link text-light" href="/users/sign_in">
+                    <i class="fa-solid fa-right-to-bracket"></i> Log in
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    </header>
+      <% end %>
     <%= yield %>
     <footer>
       <div class="container mt-5">
