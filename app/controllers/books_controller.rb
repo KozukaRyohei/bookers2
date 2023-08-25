@@ -19,9 +19,8 @@ class BooksController < ApplicationController
 
   def show
     @book_new = Book.new
-    @book =  Book.find(params[:id])#bookを作ったユーザーの情報を入れたい
+    @book =  Book.find(params[:id])
     @user = @book.user
-    #@userが作ったbookの内容(title,body)が欲しい
   end
 
   def edit
