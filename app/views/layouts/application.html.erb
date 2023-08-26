@@ -82,10 +82,12 @@
     </header>
       <% end %>
     <div>
+      <!--フラッシュメッセージ-->
     <% flash.each do |message_type, message| %>
       <div class="flash-message <%= message_type %>"><%= message %></div>
     <% end %>
     </div>
+    <!--バリデーション-->
     <%= yield %>
     <footer>
       <div class="container mt-5">
