@@ -8,9 +8,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if @user
+      flash[:notice] = "Welcome! You have signed up successfully."
+    end
     @book = Book.new
     @books = Book.all
     @users = User.all
+
   end
 
   def edit
