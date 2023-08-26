@@ -81,6 +81,11 @@
         </nav>
     </header>
       <% end %>
+    <div>
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
+    </div>
     <%= yield %>
     <footer>
       <div class="container mt-5">
