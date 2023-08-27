@@ -2,7 +2,6 @@
   <div class = "container">
     <div class="row">
       <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-        <h1>Editing Book</h1>
         <% if @user.errors.any? %>
           <h3>
             <%= @user.errors.count %> error prohibited this obj from being saved:
@@ -22,13 +21,11 @@
             <%= f.text_field :name, class:"form-control name" %>
           </div>
 
-
         <!--画像の投稿フォーム-->
           <div class="form-group">
             <label for="Image">Image</label>
-            <%= f.file_field :image, class:"form-control-file" %>
+            <%= f.file_field :profile_image, class:"form-control-file" %>
           </div>
-
 
         <!--紹介文フォーム-->
         <div class="form-group">
